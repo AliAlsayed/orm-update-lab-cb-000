@@ -22,10 +22,14 @@ class Student
   end
 
   def save
-    DB[:conn].execute("""
-      insert into students (name, grade) values (?, ?)
-    """, @name, @grade)
-    @id = DB[:conn].execute("select last_insert_rowid() from students;")[0][0]
+    if @id 
+      update
+    else
+      DB[:conn].execute("""
+        insert into students (name, grade) values (?, ?)
+      """, @name, @grade)
+      @id = DB[:conn].execute("select last_insert_rowid() from students;")[0][0]
+    end
   end
 
   def self.create(name, grade)
