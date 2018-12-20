@@ -8,6 +8,14 @@ class Student
     @grade = grade
     @id = id 
   end
+
+  def self.create_table
+      DB[:conn].execute("""
+            create table if not exists students (id integer primary key,
+                                                 name text,
+                                                 grade integer;)
+            """)
+  end
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]
 
