@@ -37,5 +37,9 @@ class Student
     student = Student.new(row[1], row[2], row[0])
   end
 
+  def self.find_by_name(name)
+    row = DB[:conn].execute("select * from students where name = ?", name)[0]
+  end
+
 
 end
