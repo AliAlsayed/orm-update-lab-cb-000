@@ -22,7 +22,7 @@ class Student
   end
 
   def save
-    if @id 
+    if @id
       update
     else
       DB[:conn].execute("""
