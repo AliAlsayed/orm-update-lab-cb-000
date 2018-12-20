@@ -13,7 +13,7 @@ class Student
       DB[:conn].execute("""
             create table if not exists students (id integer primary key,
                                                  name text,
-                                                 grade integer;)
+                                                 grade integer);
             """)
   end
   # Remember, you can access your database connection anywhere in this class
