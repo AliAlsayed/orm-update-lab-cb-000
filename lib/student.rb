@@ -25,7 +25,7 @@ class Student
     DB[:conn].execute("""
       insert into students (name, grade) values (?, ?)
     """, @name, @grade)
-    @id = DB[:conn].execute("select last insert row_id() from students;")[0][0]
+    @id = DB[:conn].execute("select last_insert_rowid() from students;")[0][0]
   end
 
 end
