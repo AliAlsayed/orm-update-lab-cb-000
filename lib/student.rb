@@ -42,5 +42,10 @@ class Student
     self.new_from_db(row)
   end
 
+  def update
+     DB[:conn].execute("""
+      update table students set name = ?, grade = ? WHERE id = ?
+     """, @name, @grade, @id)
+  end
 
 end
